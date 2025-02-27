@@ -7,8 +7,8 @@ from entities.Entity import Obstacle, CellState, Grid
 from consts import Direction, MOVE_DIRECTION, TURN_FACTOR, ITERATIONS, TURN_RADIUS, SAFE_COST
 from python_tsp.exact import solve_tsp_dynamic_programming
 
-turn_wrt_big_turns = [[3 * TURN_RADIUS, TURN_RADIUS],
-                  [4 * TURN_RADIUS, 2 * TURN_RADIUS]]
+turn_wrt_big_turns = [[2 * TURN_RADIUS, 3 * TURN_RADIUS],
+                  [2 * TURN_RADIUS, 2 * TURN_RADIUS]]
 
 
 class MazeSolver:
@@ -345,17 +345,17 @@ class MazeSolver:
                         safe_cost = self.get_safe_cost(x - bigger_change, y + smaller_change)
                         neighbors.append((x - bigger_change, y + smaller_change, md, safe_cost + 10))
 
-            diagonal_moves = [
-                (1, 1, direction),
-                (1, -1, direction),
-                (-1, 1, direction),
-                (-1, -1, direction)
-            ]
+            # diagonal_moves = [
+            #     (1, 1, direction),
+            #     (1, -1, direction),
+            #     (-1, 1, direction),
+            #     (-1, -1, direction)
+            # ]
 
-            for dx, dy, md in diagonal_moves:
-                if self.grid.reachable(x + dx, y + dy):
-                    safe_cost = self.get_safe_cost(x + dx, y + dy)
-                    neighbors.append((x + dx, y + dy, md, safe_cost))
+            # for dx, dy, md in diagonal_moves:
+            #     if self.grid.reachable(x + dx, y + dy):
+            #         safe_cost = self.get_safe_cost(x + dx, y + dy)
+            #         neighbors.append((x + dx, y + dy, md, safe_cost))
         
         return neighbors
 
