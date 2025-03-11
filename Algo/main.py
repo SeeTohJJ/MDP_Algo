@@ -60,9 +60,9 @@ def path_finding():
         if command.startswith("FIN"):
             continue
         elif command.startswith("FW") or command.startswith("FS"):
-            i += int(command[2:]) // 10
+            i += int(command[2:]) #// 10
         elif command.startswith("BW") or command.startswith("BS"):
-            i += int(command[2:]) // 10
+            i += int(command[2:]) #// 10
         else:
             i += 1
         path_results.append(optimal_path[i].get_dict())
@@ -90,12 +90,12 @@ def image_predict():
     obstacle_id = constituents[1]
 
     ## Week 8 ## 
-    #signal = constituents[2].strip(".jpg")
-    #image_id = predict_image(filename, model, signal)
+    signal = constituents[2].strip(".jpg")
+    image_id = predict_image(filename, model, signal)
 
     ## Week 9 ## 
     # We don't need to pass in the signal anymore
-    image_id = predict_image_week_9(filename,model)
+    # image_id = predict_image_week_9(filename,model)
 
     # Return the obstacle_id and image_id
     result = {
@@ -104,16 +104,16 @@ def image_predict():
     }
     return jsonify(result)
 
-@app.route('/stitch', methods=['GET'])
-def stitch():
-    """
-    This is the main endpoint for the stitching command. Stitches the images using two different functions, in effect creating two stitches, just for redundancy purposes
-    """
-    img = stitch_image()
-    img.show()
-    img2 = stitch_image_own()
-    img2.show()
-    return jsonify({"result": "ok"})
+# @app.route('/stitch', methods=['GET'])
+# def stitch():
+#     """
+#     This is the main endpoint for the stitching command. Stitches the images using two different functions, in effect creating two stitches, just for redundancy purposes
+#     """
+#     # img = stitch_image()
+#     # img.show()
+#     # img2 = stitch_image_own()
+#     # img2.show()
+#     return jsonify({"result": "ok"})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

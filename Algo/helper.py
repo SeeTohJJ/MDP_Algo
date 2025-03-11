@@ -252,8 +252,11 @@ def command_generator(states, obstacles):
             # Get the number of steps of previous command
             steps = int(compressed_commands[-1][2:])
             # If steps are not 90, add 10 to the steps
-            if steps != 9:
+            if steps < 9:
                 compressed_commands[-1] = "BW0{}".format(steps + 1)
+                continue
+            else:
+                compressed_commands[-1] = "BW{}".format(steps + 1)
                 continue
 
         # If both commands are FW
@@ -261,11 +264,15 @@ def command_generator(states, obstacles):
             # Get the number of steps of previous command
             steps = int(compressed_commands[-1][2:])
             # If steps are not 90, add 10 to the steps
-            if steps != 9:
+            if steps < 9:
                 compressed_commands[-1] = "FW0{}".format(steps + 1)
+                continue
+            else:
+                compressed_commands[-1] = "FW{}".format(steps + 1)
                 continue
         
         # Otherwise, just add as usual
         compressed_commands.append(commands[i])
-
+    
+    print(compressed_commands)
     return compressed_commands

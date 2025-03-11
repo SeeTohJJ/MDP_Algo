@@ -349,23 +349,24 @@ class Grid:
             #     continue
 
             # Must be at least 4 units away in total (x+y)
-            if abs(ob.x - x) + abs(ob.y - y) >= 4:
+            if abs(ob.x - x) + abs(ob.y - y) >= 5:
                 # print(f"ob.x: {ob.x} ob.y: {ob.y} x: {x} y:{y} Triggered more than 3 units bypass")
                 continue
             # If max(x,y) is less than 3 units away, consider not reachable
             # if max(abs(ob.x - x), abs(ob.y - y)) < EXPANDED_CELL * 2 + 1:
+            # JJ Safe Cost
             if turn:
-                if max(abs(ob.x - x), abs(ob.y - y)) < EXPANDED_CELL * 2 + 1:
+                if max(abs(ob.x - x), abs(ob.y - y)) < EXPANDED_CELL * 2 + 3:
                     # if ob.x == 0 and ob.y == 10 and x == 1 and y == 12:
                     #     print(f"ob.x: {ob.x} ob.y: {ob.y} x: {x} y:{y} Triggered less than 3 max units trap")
                     return False
             if preTurn:
-                if max(abs(ob.x - x), abs(ob.y - y)) < EXPANDED_CELL * 2 + 1:
+                if max(abs(ob.x - x), abs(ob.y - y)) < EXPANDED_CELL * 2 + 3:
                     # if ob.x == 0 and ob.y == 10 and x == 1 and y == 12:
                     #     print(f"ob.x: {ob.x} ob.y: {ob.y} x: {x} y:{y} Triggered less than 3 max units trap")
                     return False
             else:
-                if max(abs(ob.x - x), abs(ob.y - y)) < 2:
+                if max(abs(ob.x - x), abs(ob.y - y)) < 3:
                     # print(f"ob.x: {ob.x} ob.y: {ob.y} x: {x} y:{y} Triggered less than 3 max units trap")
                     return False
 
