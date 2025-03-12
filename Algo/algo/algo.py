@@ -8,14 +8,11 @@ from consts import Direction, MOVE_DIRECTION, TURN_FACTOR, ITERATIONS, TURN_RADI
 from python_tsp.exact import solve_tsp_dynamic_programming
 
 # JJ Turn Radius
-FW_turning_radius = [[1 * TURN_RADIUS, 1 * TURN_RADIUS],
-                    [2 * TURN_RADIUS, 3 * TURN_RADIUS]]
-
-BW_turning_radius = [[1 * TURN_RADIUS, 1 * TURN_RADIUS],
+FW_turning_radius = [[3 * TURN_RADIUS, 2 * TURN_RADIUS],
                     [3 * TURN_RADIUS, 2 * TURN_RADIUS]]
 
-FR_turning_radius = [[2 * TURN_RADIUS, 1 * TURN_RADIUS], 
-                    [2 * TURN_RADIUS, 3 * TURN_RADIUS]]
+BW_turning_radius = [[2 * TURN_RADIUS, 3 * TURN_RADIUS],
+                    [3 * TURN_RADIUS, 2 * TURN_RADIUS]]
 
 class MazeSolver:
     def __init__(
@@ -273,8 +270,8 @@ class MazeSolver:
                 BW_bigger_change = BW_turning_radius[self.big_turn][0]
                 BW_smaller_change = BW_turning_radius[self.big_turn][1]
 
-                FR_bigger_change = FR_turning_radius[self.big_turn][0]
-                FR_smaller_change = FR_turning_radius[self.big_turn][1]
+                FR_bigger_change = FW_turning_radius[self.big_turn][0]
+                FR_smaller_change = FW_turning_radius[self.big_turn][1]
 
                 # north <-> east
                 if direction == Direction.NORTH and md == Direction.EAST:

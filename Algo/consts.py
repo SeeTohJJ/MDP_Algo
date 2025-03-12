@@ -31,7 +31,7 @@ MOVE_DIRECTION = [
     # (-1, -1, Direction.SOUTH_WEST)
 ]
 
-TURN_FACTOR = 2
+TURN_FACTOR = 10
 
 EXPANDED_CELL = 1 # for both agent and obstacles
 
@@ -39,7 +39,7 @@ WIDTH = 20
 HEIGHT = 20
 
 # JJ Originally 2000, reduce to speed up computation
-ITERATIONS = 1000
+ITERATIONS = 2000
 TURN_RADIUS = 1
 
 SAFE_COST = 1000 # the cost for the turn in case there is a chance that the robot is touch some obstacle
