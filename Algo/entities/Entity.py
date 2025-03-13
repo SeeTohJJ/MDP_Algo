@@ -349,7 +349,12 @@ class Grid:
             #     continue
 
             # Must be at least 4 units away in total (x+y)
-            if abs(ob.x - x) + abs(ob.y - y) >= 4:
+            # if abs(ob.x - x) + abs(ob.y - y) >= 4:
+            passthrough = 5
+            if abs(ob.x - x) + abs(ob.y - y) < 5:
+                passthrough = 4
+            # Must be at least 4 units away in total (x+y)  
+            if abs(ob.x - x) + abs(ob.y - y) >= passthrough:
                 # print(f"ob.x: {ob.x} ob.y: {ob.y} x: {x} y:{y} Triggered more than 3 units bypass")
                 continue
             # If max(x,y) is less than 3 units away, consider not reachable
