@@ -33,7 +33,7 @@ MOVE_DIRECTION = [
 
 TURN_FACTOR = 10
 
-EXPANDED_CELL = 1 # for both agent and obstacles
+EXPANDED_CELL = 2 # for both agent and obstacles
 
 WIDTH = 20
 HEIGHT = 20
