@@ -88,91 +88,169 @@ class Obstacle(CellState):
         # If the obstacle is facing north, then robot's cell state must be facing south
         if self.direction == Direction.NORTH:
             if retrying == False:
+                 #zx 3 grid
+                if is_valid(self.x, self.y + 1 + EXPANDED_CELL * 3):
+                    cells.append(CellState(
+                        self.x, self.y + 1 + EXPANDED_CELL * 3, Direction.SOUTH, self.obstacle_id, 5))
+                    
                 # Or (x, y + 3)
                 if is_valid(self.x, self.y + 1 + EXPANDED_CELL * 2):
                     cells.append(CellState(
                         self.x, self.y + 1 + EXPANDED_CELL * 2, Direction.SOUTH, self.obstacle_id, 5))
+
+                #zx 3 grid
+                if is_valid(self.x, self.y + 2 + EXPANDED_CELL * 3):
+                    cells.append(CellState(
+                        self.x, self.y + 2 + EXPANDED_CELL * 3, Direction.SOUTH, self.obstacle_id, 0))
+
                 # Or (x, y + 4)
                 if is_valid(self.x, self.y + 2 + EXPANDED_CELL * 2):
                     cells.append(CellState(
                         self.x, self.y + 2 + EXPANDED_CELL * 2, Direction.SOUTH, self.obstacle_id, 0))
 
-                # Or (x + 1, y + 3)
-                # if is_valid(self.x + 1, self.y + 1 + EXPANDED_CELL * 2):
-                #     cells.append(CellState(self.x + 1, self.y + 1 + EXPANDED_CELL * 2, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST*10))
-                # # Or (x - 1, y + 3)
-                # if is_valid(self.x - 1, self.y + 1 + EXPANDED_CELL * 2):
-                #     cells.append(CellState(self.x - 1, self.y + 1 + EXPANDED_CELL * 2, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST*10))
-
+                # zx 3 grid    
+                if is_valid(self.x + 1, self.y + 2 + EXPANDED_CELL * 3):
+                    cells.append(CellState(self.x + 1, self.y + 2 + EXPANDED_CELL *
+                                 3, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST))
+                
                 # Or (x + 1, y + 4)
                 if is_valid(self.x + 1, self.y + 2 + EXPANDED_CELL * 2):
                     cells.append(CellState(self.x + 1, self.y + 2 + EXPANDED_CELL *
                                  2, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST))
+                
+                #zx 3 grid    
+                if is_valid(self.x - 1, self.y + 2 + EXPANDED_CELL * 3):
+                    cells.append(CellState(self.x - 1, self.y + 2 + EXPANDED_CELL *
+                                 3, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST))
+                
                 # Or (x - 1, y + 4)
                 if is_valid(self.x - 1, self.y + 2 + EXPANDED_CELL * 2):
                     cells.append(CellState(self.x - 1, self.y + 2 + EXPANDED_CELL *
                                  2, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST))
+                    
 
             elif retrying == True:
+                # zx 3 grid
+                if is_valid(self.x, self.y + 2 + EXPANDED_CELL * 3):
+                    cells.append(CellState(
+                        self.x, self.y + 2 + EXPANDED_CELL * 3, Direction.SOUTH, self.obstacle_id, 0))
+                    
                 # Or (x, y + 4)
                 if is_valid(self.x, self.y + 2 + EXPANDED_CELL * 2):
                     cells.append(CellState(
                         self.x, self.y + 2 + EXPANDED_CELL * 2, Direction.SOUTH, self.obstacle_id, 0))
+                
+                #zx 3 grid
+                if is_valid(self.x, self.y + 2 + EXPANDED_CELL * 3):
+                    cells.append(CellState(
+                        self.x, self.y + 2 + EXPANDED_CELL * 3, Direction.SOUTH, self.obstacle_id, 0))
+                
                 # Or (x, y + 5)
                 if is_valid(self.x, self.y + 3 + EXPANDED_CELL * 2):
                     cells.append(CellState(
                         self.x, self.y + 3 + EXPANDED_CELL * 2, Direction.SOUTH, self.obstacle_id, 0))
+                      
+                #zx 3 grid
+                if is_valid(self.x + 1, self.y + 2 + EXPANDED_CELL * 3):
+                    cells.append(CellState(self.x + 1, self.y + 2 + EXPANDED_CELL *
+                                 3, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST))
+                
                 # Or (x + 1, y + 4)
                 if is_valid(self.x + 1, self.y + 2 + EXPANDED_CELL * 2):
                     cells.append(CellState(self.x + 1, self.y + 2 + EXPANDED_CELL *
                                  2, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST))
+                
+                #zx 3 grid
+                if is_valid(self.x - 1, self.y + 2 + EXPANDED_CELL * 3):
+                    cells.append(CellState(self.x - 1, self.y + 2 + EXPANDED_CELL *
+                                 3, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST))
+                
                 # Or (x - 1, y + 4)
                 if is_valid(self.x - 1, self.y + 2 + EXPANDED_CELL * 2):
                     cells.append(CellState(self.x - 1, self.y + 2 + EXPANDED_CELL *
                                  2, Direction.SOUTH, self.obstacle_id, SCREENSHOT_COST))
+                
 
         # If obstacle is facing south, then robot's cell state must be facing north
         elif self.direction == Direction.SOUTH:
 
             if retrying == False:
+                #zx 3 grid
+                if is_valid(self.x, self.y - 1 - EXPANDED_CELL * 3):
+                    cells.append(CellState(
+                        self.x, self.y - 1 - EXPANDED_CELL * 3, Direction.NORTH, self.obstacle_id, 5))
+                        
                 # Or (x, y - 3)
                 if is_valid(self.x, self.y - 1 - EXPANDED_CELL * 2):
                     cells.append(CellState(
                         self.x, self.y - 1 - EXPANDED_CELL * 2, Direction.NORTH, self.obstacle_id, 5))
+                
+                # zx 3 grid 
+                if is_valid(self.x, self.y - 2 - EXPANDED_CELL * 3):
+                    cells.append(CellState(
+                        self.x, self.y - 2 - EXPANDED_CELL * 3, Direction.NORTH, self.obstacle_id, 0))    
+
                 # Or (x, y - 4)
                 if is_valid(self.x, self.y - 2 - EXPANDED_CELL * 2):
                     cells.append(CellState(
                         self.x, self.y - 2 - EXPANDED_CELL * 2, Direction.NORTH, self.obstacle_id, 0))
 
-                # Or (x + 1, y - 3)
-                # if is_valid(self.x + 1, self.y - 1 - EXPANDED_CELL * 2):
-                #     cells.append(CellState(self.x + 1, self.y - 1 - EXPANDED_CELL * 2, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST*10))
-                # # Or (x - 1, y - 3)
-                # if is_valid(self.x - 1, self.y - 1 - EXPANDED_CELL * 2):
-                #     cells.append(CellState(self.x - 1, self.y - 1 - EXPANDED_CELL * 2, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST*10))
+                # zx 3 grid
+                if is_valid(self.x + 1, self.y - 2 - EXPANDED_CELL * 3):
+                    cells.append(CellState(self.x + 1, self.y - 2 - EXPANDED_CELL *
+                                 3, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST))
 
                 # Or (x + 1, y - 4)
                 if is_valid(self.x + 1, self.y - 2 - EXPANDED_CELL * 2):
                     cells.append(CellState(self.x + 1, self.y - 2 - EXPANDED_CELL *
                                  2, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST))
+
+                # zx 3 grid
+                if is_valid(self.x - 1, self.y - 2 - EXPANDED_CELL * 3):
+                    cells.append(CellState(self.x - 1, self.y - 2 - EXPANDED_CELL *
+                                 3, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST))
+
                 # Or (x - 1, y - 4)
                 if is_valid(self.x - 1, self.y - 2 - EXPANDED_CELL * 2):
                     cells.append(CellState(self.x - 1, self.y - 2 - EXPANDED_CELL *
                                  2, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST))
 
             elif retrying == True:
+                # zx 3 grid
+                if is_valid(self.x, self.y - 2 - EXPANDED_CELL * 3):
+                    cells.append(CellState(
+                        self.x, self.y - 2 - EXPANDED_CELL * 3, Direction.NORTH, self.obstacle_id, 0))
+
                 # Or (x, y - 4)
                 if is_valid(self.x, self.y - 2 - EXPANDED_CELL * 2):
                     cells.append(CellState(
                         self.x, self.y - 2 - EXPANDED_CELL * 2, Direction.NORTH, self.obstacle_id, 0))
+                    
+                # zx 3 grid
+                if is_valid(self.x, self.y - 3 - EXPANDED_CELL * 3):
+                    cells.append(CellState(
+                        self.x, self.y - 3 - EXPANDED_CELL * 3, Direction.NORTH, self.obstacle_id, 0))
+
                 # Or (x, y - 5)
                 if is_valid(self.x, self.y - 3 - EXPANDED_CELL * 2):
                     cells.append(CellState(
                         self.x, self.y - 3 - EXPANDED_CELL * 2, Direction.NORTH, self.obstacle_id, 0))
+                
+                # zx 3 grid
+                if is_valid(self.x + 1, self.y - 2 - EXPANDED_CELL * 3):
+                    cells.append(CellState(self.x + 1, self.y - 2 - EXPANDED_CELL *
+                                 3, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST))
+
                 # Or (x + 1, y - 4)
                 if is_valid(self.x + 1, self.y - 2 - EXPANDED_CELL * 2):
                     cells.append(CellState(self.x + 1, self.y - 2 - EXPANDED_CELL *
                                  2, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST))
+                
+                # zx 3 grid
+                if is_valid(self.x - 1, self.y - 2 - EXPANDED_CELL * 3):
+                    cells.append(CellState(self.x - 1, self.y - 2 - EXPANDED_CELL *
+                                 3, Direction.NORTH, self.obstacle_id, SCREENSHOT_COST))
+
                 # Or (x - 1, y - 4)
                 if is_valid(self.x - 1, self.y - 2 - EXPANDED_CELL * 2):
                     cells.append(CellState(self.x - 1, self.y - 2 - EXPANDED_CELL *
@@ -182,28 +260,35 @@ class Obstacle(CellState):
         elif self.direction == Direction.EAST:
 
             if retrying == False:
+                # zx 3 grid
+                if is_valid(self.x + 1 + EXPANDED_CELL * 3, self.y):
+                    cells.append(CellState(self.x + 1 + EXPANDED_CELL * 3,
+                                 self.y, Direction.WEST, self.obstacle_id, 5))
                 # Or (x + 3,y)
                 if is_valid(self.x + 1 + EXPANDED_CELL * 2, self.y):
                     cells.append(CellState(self.x + 1 + EXPANDED_CELL * 2,
                                  self.y, Direction.WEST, self.obstacle_id, 5))
+                # zx 3 grid
+                if is_valid(self.x + 2 + EXPANDED_CELL * 3, self.y):
+                    # print(f"Obstacle facing east, Adding {self.x + 2 + EXPANDED_CELL * 2}, {self.y}")
+                    cells.append(CellState(self.x + 2 + EXPANDED_CELL * 3,
+                                 self.y, Direction.WEST, self.obstacle_id, 0))
                 # Or (x + 4,y)
                 if is_valid(self.x + 2 + EXPANDED_CELL * 2, self.y):
                     # print(f"Obstacle facing east, Adding {self.x + 2 + EXPANDED_CELL * 2}, {self.y}")
                     cells.append(CellState(self.x + 2 + EXPANDED_CELL * 2,
                                  self.y, Direction.WEST, self.obstacle_id, 0))
-
-                # Or (x + 3,y + 1)
-                # if is_valid(self.x + 1 + EXPANDED_CELL * 2, self.y + 1):
-                #     #print(f"Obstacle facing east, Adding {self.x + 2 + EXPANDED_CELL * 2}, {self.y + 1}")
-                #     cells.append(CellState(self.x + 1 + EXPANDED_CELL * 2, self.y + 1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST*10))
-                # # Or (x + 3,y - 1)
-                # if is_valid(self.x + 1 + EXPANDED_CELL * 2, self.y - 1):
-                #     #print(f"Obstacle facing east, Adding {self.x + 2 + EXPANDED_CELL * 2}, {self.y - 1}")
-                #     cells.append(CellState(self.x + 1 + EXPANDED_CELL * 2, self.y - 1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST*10))
-
+                # zx 3 grid
+                if is_valid(self.x + 2 + EXPANDED_CELL * 3, self.y + 1):
+                    cells.append(CellState(self.x + 2 + EXPANDED_CELL * 3, self.y +
+                                 1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST))
                 # Or (x + 4, y + 1)
                 if is_valid(self.x + 2 + EXPANDED_CELL * 2, self.y + 1):
                     cells.append(CellState(self.x + 2 + EXPANDED_CELL * 2, self.y +
+                                 1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST))
+                # zx 3 grid
+                if is_valid(self.x + 2 + EXPANDED_CELL * 3, self.y - 1):
+                    cells.append(CellState(self.x + 2 + EXPANDED_CELL * 3, self.y -
                                  1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST))
                 # Or (x + 4, y - 1)
                 if is_valid(self.x + 2 + EXPANDED_CELL * 2, self.y - 1):
@@ -211,17 +296,33 @@ class Obstacle(CellState):
                                  1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST))
 
             elif retrying == True:
+                # zx 3 grid
+                if is_valid(self.x + 2 + EXPANDED_CELL * 3, self.y):
+                    cells.append(CellState(self.x + 2 + EXPANDED_CELL * 3,
+                                 self.y, Direction.WEST, self.obstacle_id, 0))
                 # Or (x + 4, y)
                 if is_valid(self.x + 2 + EXPANDED_CELL * 2, self.y):
                     cells.append(CellState(self.x + 2 + EXPANDED_CELL * 2,
+                                 self.y, Direction.WEST, self.obstacle_id, 0))
+                # zx 3 grid
+                if is_valid(self.x + 3 + EXPANDED_CELL * 3, self.y):
+                    cells.append(CellState(self.x + 3 + EXPANDED_CELL * 3,
                                  self.y, Direction.WEST, self.obstacle_id, 0))
                 # Or (x + 5, y)
                 if is_valid(self.x + 3 + EXPANDED_CELL * 2, self.y):
                     cells.append(CellState(self.x + 3 + EXPANDED_CELL * 2,
                                  self.y, Direction.WEST, self.obstacle_id, 0))
+                # zx 3 grid
+                if is_valid(self.x + 2 + EXPANDED_CELL * 3, self.y + 1):
+                    cells.append(CellState(self.x + 2 + EXPANDED_CELL * 3, self.y +
+                                 1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST))
                 # Or (x + 4,y + 1)
                 if is_valid(self.x + 2 + EXPANDED_CELL * 2, self.y + 1):
                     cells.append(CellState(self.x + 2 + EXPANDED_CELL * 2, self.y +
+                                 1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST))
+                # zx 3 grid
+                if is_valid(self.x + 2 + EXPANDED_CELL * 3, self.y - 1):
+                    cells.append(CellState(self.x + 2 + EXPANDED_CELL * 3, self.y -
                                  1, Direction.WEST, self.obstacle_id, SCREENSHOT_COST))
                 # Or (x + 4,y - 1)
                 if is_valid(self.x + 2 + EXPANDED_CELL * 2, self.y - 1):
@@ -230,30 +331,34 @@ class Obstacle(CellState):
 
         # If obstacle is facing west, then robot's cell state must be facing east
         elif self.direction == Direction.WEST:
-            # It can be (x - 2,y)
-            # if is_valid(self.x - EXPANDED_CELL * 2, self.y):
-            #     cells.append(CellState(self.x - EXPANDED_CELL * 2, self.y, Direction.EAST, self.obstacle_id, 0))
-
             if retrying == False:
+                # zx 3 grid
+                if is_valid(self.x - 1 - EXPANDED_CELL * 3, self.y):
+                    cells.append(CellState(self.x - 1 - EXPANDED_CELL * 3,
+                                 self.y, Direction.EAST, self.obstacle_id, 5))
                 # Or (x - 3, y)
                 if is_valid(self.x - 1 - EXPANDED_CELL * 2, self.y):
                     cells.append(CellState(self.x - 1 - EXPANDED_CELL * 2,
                                  self.y, Direction.EAST, self.obstacle_id, 5))
+                # zx 3 grid
+                if is_valid(self.x - 2 - EXPANDED_CELL * 3, self.y):
+                    cells.append(CellState(self.x - 2 - EXPANDED_CELL * 3,
+                                 self.y, Direction.EAST, self.obstacle_id, 0))
                 # Or (x - 4, y)
                 if is_valid(self.x - 2 - EXPANDED_CELL * 2, self.y):
                     cells.append(CellState(self.x - 2 - EXPANDED_CELL * 2,
                                  self.y, Direction.EAST, self.obstacle_id, 0))
-
-                # Or (x - 3,y + 1)
-                # if is_valid(self.x - 1 - EXPANDED_CELL * 2, self.y + 1):
-                #     cells.append(CellState(self.x - 1 - EXPANDED_CELL * 2, self.y + 1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST*10))
-                # # Or (x - 3,y - 1)
-                # if is_valid(self.x - 1 - EXPANDED_CELL * 2, self.y - 1):
-                #     cells.append(CellState(self.x - 1 - EXPANDED_CELL * 2, self.y - 1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST*10))
-
+                # zx 3 grid
+                if is_valid(self.x - 2 - EXPANDED_CELL * 3, self.y + 1):
+                    cells.append(CellState(self.x - 2 - EXPANDED_CELL * 3, self.y +
+                                 1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST))  
                 # Or (x - 4, y + 1)
                 if is_valid(self.x - 2 - EXPANDED_CELL * 2, self.y + 1):
                     cells.append(CellState(self.x - 2 - EXPANDED_CELL * 2, self.y +
+                                 1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST))
+                # zx 3 grid
+                if is_valid(self.x - 2 - EXPANDED_CELL * 3, self.y - 1):
+                    cells.append(CellState(self.x - 2 - EXPANDED_CELL * 3, self.y -
                                  1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST))
                 # Or (x - 4, y - 1)
                 if is_valid(self.x - 2 - EXPANDED_CELL * 2, self.y - 1):
@@ -261,17 +366,33 @@ class Obstacle(CellState):
                                  1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST))
 
             elif retrying == True:
+                # zx 3 grid
+                if is_valid(self.x - 2 - EXPANDED_CELL * 3, self.y):
+                    cells.append(CellState(self.x - 2 - EXPANDED_CELL * 3,
+                                 self.y, Direction.EAST, self.obstacle_id, 0))
                 # Or (x - 4, y)
                 if is_valid(self.x - 2 - EXPANDED_CELL * 2, self.y):
                     cells.append(CellState(self.x - 2 - EXPANDED_CELL * 2,
+                                 self.y, Direction.EAST, self.obstacle_id, 0))
+                # zx 3 grid
+                if is_valid(self.x - 3 - EXPANDED_CELL * 3, self.y):
+                    cells.append(CellState(self.x - 3 - EXPANDED_CELL * 3,
                                  self.y, Direction.EAST, self.obstacle_id, 0))
                 # Or (x - 5, y)
                 if is_valid(self.x - 3 - EXPANDED_CELL * 2, self.y):
                     cells.append(CellState(self.x - 3 - EXPANDED_CELL * 2,
                                  self.y, Direction.EAST, self.obstacle_id, 0))
+                # zx 3 grid
+                if is_valid(self.x - 2 - EXPANDED_CELL * 3, self.y + 1):
+                    cells.append(CellState(self.x - 2 - EXPANDED_CELL * 3, self.y +
+                                 1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST))
                 # Or (x - 4, y + 1)
                 if is_valid(self.x - 2 - EXPANDED_CELL * 2, self.y + 1):
                     cells.append(CellState(self.x - 2 - EXPANDED_CELL * 2, self.y +
+                                 1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST))
+                # zx 3 grid
+                if is_valid(self.x - 2 - EXPANDED_CELL * 3, self.y - 1):
+                    cells.append(CellState(self.x - 2 - EXPANDED_CELL * 3, self.y -
                                  1, Direction.EAST, self.obstacle_id, SCREENSHOT_COST))
                 # Or (x - 4, y - 1)
                 if is_valid(self.x - 2 - EXPANDED_CELL * 2, self.y - 1):
@@ -349,7 +470,7 @@ class Grid:
             #     continue
 
             # Must be at least 4 units away in total (x+y)
-            if abs(ob.x - x) + abs(ob.y - y) >= 5:
+            if abs(ob.x - x) + abs(ob.y - y) >= 4:
                 # print(f"ob.x: {ob.x} ob.y: {ob.y} x: {x} y:{y} Triggered more than 3 units bypass")
                 continue
             # If max(x,y) is less than 3 units away, consider not reachable

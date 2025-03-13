@@ -22,7 +22,8 @@ def status():
 def path_finding():
     """
     This is the main endpoint for the path finding algorithm
-    :return: a json object with a key "data" and value a dictionary with keys "distance", "path", and "commands"
+    :return: a json object with a key "data" and value a d
+    ctionary with keys "distance", "path", and "commands"
     """
     # Get the json data from the request
     content = request.json
@@ -116,4 +117,4 @@ def image_predict():
 #     return jsonify({"result": "ok"})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8888, debug=True)
